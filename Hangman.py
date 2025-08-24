@@ -5,9 +5,16 @@ while True:
   choice = random.choice(words)
   word = list("_____")
   j = 9
+  set = set()
   while True:
     word = list(word)
-    guess = input("Enter a letter: ")
+    guess = input("Enter a letter: ").lower()
+    if len(guess) != 1 or not guess.isalpha():
+        print("Please enter only one letter!")
+        continue
+    if guess in set:
+        print("You have already tried that letter!")
+        continue
     for i in range(len(choice)):
       if choice[i] == guess:
           word[i] = guess
@@ -19,6 +26,7 @@ while True:
       if j > 0:
           print("Nope! You have", j, "turns left")
           j -= 1
+          set.add(guess)
           continue    
     
       else:
