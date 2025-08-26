@@ -1,5 +1,8 @@
+import time
 print("Swagat hai aapka Kaun Banega Crorepati mein")
+time.sleep(2)
 print("Aaiye shuru karte hai,haay!")
+time.sleep(2)
 num = ["pahla","dusra","tisra","chautha",
 "paanchva","chhatha","saantva","aanthva","nauva",
 "dasva"]
@@ -58,7 +61,9 @@ quiz = {
 }
 for i in range(len(num)):
   print(f"Yeh raha {num[i]} sawaal {prize[i]} rupayo ke liye,aapki computer screen par:")
+  time.sleep(3)
   print(quiz[i+1]["question"])
+  time.sleep(2)
   print(quiz[i+1]["options"])
   while True:
     chosen = input("Apna uttar dakhil kare ==> ").title()
@@ -67,12 +72,17 @@ for i in range(len(num)):
       continue
     elif chosen in quiz[i+1]["options"]:
       print(f"Computer ji {chosen} par taala lagaya jaaye.")
+      time.sleep(4)
       if chosen == quiz[i+1]["answer"]:
         if i+1 < len(quiz):
-          print(f"Bilkul sahi uttar hai,aap jeet chuke ho {prize[i]} rupaye!\nChaliye badhte hai agle sawaal ki taraf.")
+          print(f"Bilkul sahi uttar hai,aap jeet chuke ho {prize[i]} rupaye!")
+          time.sleep(3)
+          print("Chaliye badhte hai agle sawaal ki taraf.")
+          time.sleep(3)
           break
         else:
           print(f"{prize[i]}!!!!!!!!\nAap jeet chuke hai pure {prize[i]},badhai ho!!Aap is dhan raashi kya karenge,ye ghar jake kisi aur ko bataiyega hum chalte hai!")
+          break
       if chosen != quiz[i+1]["answer"]:
         if i <= 2:
           print("Ji aapka uttar galat hai! Sahi uttar tha", quiz[i+1]["answer"], "\nMaaf kijiye par aapko khali haanth hi ghar jana padega!")
@@ -80,8 +90,8 @@ for i in range(len(num)):
         else: 
           print("Ji aapka uttar galat hai! Sahi uttar tha", quiz[i+1]["answer"], "\nPar aap jeet chuke ho", prize[i-2], "rupaye, aapko shubhkaamnaye!")
           break
-  if i < 9:
-    if chosen == quiz[i+1]["answer"]:
+  if chosen == quiz[i+1]["answer"]:
+    if i < 9:
         continue
     else:
         print("Thanks for playing!")
